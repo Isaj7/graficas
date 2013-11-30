@@ -8,26 +8,29 @@
 #include <GL\glew.h>
 #include <GL\freeglut.h>
 #include <iostream>
-
+#include <ctime>
 using namespace std;
 
 #define DEF_floorGridScale	1.0
 #define DEF_floorGridXSteps	10.0
 #define DEF_floorGridZSteps	10.0
 
+int ranNum;
 int activarBono = 0;
-float X1= -1.5;
-float X2= 1.5;
+int numeroBono = 0;
+int generarRandom = 1;
+int aleatorio = 0;
+
+float X1 = -1.5;
+float X2 = 1.5;
 float PI = 3.141592;
 float X = 0.0;
 float Y = -7.8;
 float movY = -0.1;
 float movX = 0.1;
-int ranNum;
 float radio2;
 float bonoX[5];
 float bonoY[5];
-int numeroBono = 0;
 float R=0.0,G=1.0,B=0.0;
 
 struct ladrillos {
@@ -39,8 +42,6 @@ struct ladrillos {
    int explota;
 } matriz[35];
 
-int generarRandom = 1;
-int aleatorio = 0;
 
 /* Funcion que genera 7 ladrillos aleatorios especiales
    y 5 ladrillos aleatorios con bono */
@@ -52,7 +53,8 @@ void ladrillosAleatorios() {
 	}
 
 	for(ranNum = 0; ranNum < 7; ranNum++) {
-		int aleatorio = rand() %34;
+		srand(time(0));
+		int aleatorio = rand() %35;
 		if (matriz[aleatorio].doble == 1) {
 			ranNum--;
 		}
@@ -60,7 +62,7 @@ void ladrillosAleatorios() {
 	}
 
 	for(ranNum = 0; ranNum < 5; ranNum++) {
-		aleatorio = rand() %34;
+		aleatorio = rand() %35;
 		if (matriz[aleatorio].bonus == 1) {
 			ranNum--;
 		}
@@ -294,7 +296,20 @@ void barrerTablero(float minX,float maxX,float minY,float maxY){
 int lost = 0;
 void actualizar(int value) {
 	for (int auxBono = 0; auxBono <= numeroBono; auxBono++) {
-		bonoY[auxBono] -= 0.1;
+		if (((bonoY[auxBono] -= 0.1) <= -7.8) && (X1 <= (bonoX[auxBono]) && (bonoX[auxBono]) <= X2)) {
+			int ranBono = rand() %100;
+			bonoX[auxBono] = -17;
+			bonoY[auxBono] = -17;
+			if (ranBono > 50) {
+				X1 -= 0.075;
+				X2 += 0.075;
+			} else {
+				movX = movX + movX*0.1;
+				movY = movY + movY*0.1;
+			}
+		} else {
+			bonoY[auxBono] -= 0.1;
+		}
 	}
 	/* Verifica si esta chocando a partir de Y mayor que cero */
 	if (movY + Y >= 0.0) {
@@ -318,6 +333,10 @@ void actualizar(int value) {
 			- Esta tocando el margen superior
 			- Al llegar al margen inferior, esta tocando la barra */
 		if (((((Y + movY) <= -7.8) && (X1 <= (X + movX) && (X + movX) <= X2)) || ((Y + movY) >= 8.8)) && lost == 0) {
+			if ((((X + movX) <= X1 + 0.6) && (movX > 0)) || ((((X + movX) >= X2 - 0.6)) && (movX < 0))) {
+				movX = movX*(-1);
+				X += movX;
+			}
 			movY = movY*(-1);
 			Y += movY;
 		R = float(rand()%10)*0.1;
