@@ -8,7 +8,7 @@
 #include <GL\glew.h>
 #include <GL\freeglut.h>
 #include <iostream>
-#include <ctime>
+#include <time.h>
 using namespace std;
 
 #define DEF_floorGridScale	1.0
@@ -346,6 +346,7 @@ void actualizar(int value) {
 		} else if (((Y + movY) <= -7.8) && ((Y + movY) > -9.0)) {
 			Y += movY;
 			lost = 1;
+			generarRandom = 1;
 		} else if ((Y + movY) <= -9.0) {
 			movY = 0;
 			movX = 0;
@@ -375,40 +376,6 @@ void actualizar(int value) {
 	}
 }
 
-
-/* Funcion encargada de detectar los movimientos del jugador en el teclado */
-void detectarTeclado (unsigned char key, int x, int y) {
-	switch (key) {
-		case'a':
-			if (movX != 0) {
-				if (X1 > -8.9) {
-					X1 -= 0.5;
-					X2 -= 0.5;
-				}
-			}
-		break;
-		case's':
-			if (movX != 0) {
-				if (X2 < 8.9) {
-					X1 += 0.5;
-					X2 += 0.5;
-				}
-			}
-			break;
-		case'1':
-			if (movX == 0) {
-				movX = 0.1;
-				movY = -0.1;
-			}
-			break;
-	}
-	glutPostRedisplay();
-	tablero();
-}
-
-
-
-
 void changeViewport(int w, int h) {
 	
 	float aspectratio;
@@ -436,7 +403,56 @@ void changeViewport(int w, int h) {
 	glMatrixMode (GL_MODELVIEW);
 }
 
+void SetVar(){
+	if (generarRandom == 1){
+		/* Limpiando los ladrillos de sus estados*/
+		for (int limpiar = 0; limpiar < 35; limpiar++) {
+			matriz[limpiar].doble = 0;
+			matriz[limpiar].bonus = 0;
+			matriz[limpiar].esta = 0;
+			matriz[limpiar].explota = 0;
+		}
+		ladrillosAleatorios();
+	}
+	X1 = -1.5;
+	X2 = 1.5;
+	X = 0.0;
+	Y = -7.8;
+	movY = -0.1;
+	movX = 0.1;
+	tablero();
+}
 
+/* Funcion encargada de detectar los movimientos del jugador en el teclado */
+void detectarTeclado (unsigned char key, int x, int y) {
+	switch (key) {
+		case'a':
+			if (movX != 0) {
+				if (X1 > -8.9) {
+					X1 -= 0.5;
+					X2 -= 0.5;
+				}
+			}
+		break;
+		case's':
+			if (movX != 0) {
+				if (X2 < 8.9) {
+					X1 += 0.5;
+					X2 += 0.5;
+				}
+			}
+			break;
+		case'1':
+			if (movX == 0) {
+				movX = 0.1;
+				movY = -0.1;
+				SetVar();
+			}
+			break;
+	}
+	glutPostRedisplay();
+	tablero();
+}
 
 void render(){
 	glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -452,17 +468,15 @@ void render(){
 	glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable( GL_LINE_SMOOTH );
 
-	
-	//ejesCoordenada();
 	if (generarRandom == 1){
-		/* Limpiando los ladrillos de sus estados*/
-		for (int limpiar = 0; limpiar < 35; limpiar++) {
-			matriz[limpiar].doble = 0;
-			matriz[limpiar].bonus = 0;
-			matriz[limpiar].esta = 0;
-			matriz[limpiar].explota = 0;
-		}
-		ladrillosAleatorios();
+        /* Limpiando los ladrillos de sus estados*/
+        for (int limpiar = 0; limpiar < 35; limpiar++) {
+                matriz[limpiar].doble = 0;
+                matriz[limpiar].bonus = 0;
+                matriz[limpiar].esta = 0;
+                matriz[limpiar].explota = 0;
+        }
+        ladrillosAleatorios();
 	}
 	tablero();
 
@@ -492,7 +506,6 @@ int main (int argc, char** argv) {
 		fprintf(stderr, "GLEW error");
 		return 1;
 	}
-	
 
 	glutMainLoop();
 	return 0;

@@ -1,9 +1,104 @@
-﻿Compilación iniciada a las 11/30/2013 6:13:03 PM.
+﻿Compilación iniciada a las 11/30/2013 7:10:29 PM.
      1>Proyecto "C:\Users\Octavio\Documents\Visual Studio 2010\Projects\OctIsa\Proyecto2\Proyecto2\Proyecto2.vcxproj" en el nodo 2 (build destinos).
      1>InitializeBuildStatus:
-         Aplicando tarea Touch a "Debug\Proyecto2.unsuccessfulbuild".
+         Se creará "Debug\Proyecto2.unsuccessfulbuild" porque se especificó "AlwaysCreate".
        ClCompile:
-         Todas las salidas están actualizadas.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\dev\opengl\glew-1.7.0\include" /IC:\dev\opengl\freeglut\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(26): warning C4305: 'inicializando' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(28): warning C4305: 'inicializando' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(29): warning C4305: 'inicializando' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(30): warning C4305: 'inicializando' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(56): warning C4244: 'argumento' : conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(77): warning C4244: 'inicializando' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(85): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(86): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(86): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(104): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(105): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(108): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(110): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(113): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(114): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(117): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(119): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(121): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(122): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(123): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(123): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(124): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(124): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(129): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(130): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(139): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(139): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(140): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(140): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(141): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(141): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(144): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(144): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(145): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(146): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(146): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(147): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(147): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(148): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(148): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(149): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(149): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(158): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(159): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(160): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(160): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(162): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(163): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(164): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(164): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(170): warning C4244: 'argumento' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(170): warning C4244: 'argumento' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(179): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(180): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(182): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(184): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(188): warning C4305: 'inicializando' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(191): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(199): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(202): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(206): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(209): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(213): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(216): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(228): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(229): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(240): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(241): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(269): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(270): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(299): warning C4305: '-=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(304): warning C4305: '-=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(305): warning C4305: '+=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(307): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(308): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(311): warning C4305: '-=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(342): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(343): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(344): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(356): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(369): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(370): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(371): warning C4244: '=' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(420): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(421): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(422): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(447): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(448): warning C4305: '=' : truncamiento de 'double' a 'float'
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(461): warning C4101: 'zLocal' : variable local sin referencia
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(461): warning C4101: 'xExtent' : variable local sin referencia
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(462): warning C4101: 'loopX' : variable local sin referencia
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(461): warning C4101: 'xLocal' : variable local sin referencia
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(462): warning C4101: 'loopZ' : variable local sin referencia
+     1>c:\users\octavio\documents\visual studio 2010\projects\octisa\proyecto2\proyecto2\main.cpp(461): warning C4101: 'zExtent' : variable local sin referencia
        ManifestResourceCompile:
          Todas las salidas están actualizadas.
        Link:
@@ -22,4 +117,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:00.78
+Tiempo transcurrido 00:00:01.85
