@@ -81,7 +81,7 @@ int explosion(float cX, float cY, int estado){
 			float y = radio * sinf(theta);//calculate the y component 
 		glBegin (GL_LINES);
 		for (float angle = 0; angle <= PI * 2; angle = angle + 0.01) {
-			glVertex2f(x + cX + sinf(angle) * 0.07, y+ cY +cosf(angle) * 0.07);
+			glVertex2f(x + cX + sinf(angle) * (0.2-radio*0.1), y+ cY +cosf(angle) * (0.2-radio*0.1));
 		}
 		glEnd();
 	}
@@ -134,9 +134,17 @@ void tablero () {
 				else if (matriz[aux].doble == 2) {
 					glColor3f(R,G,B);
 					glBegin(GL_TRIANGLES);
-						glVertex2f(i + 0.75-0.15,j-0.25-0.05);
-						glVertex2f(i+0.75,j-0.25-0.07);
-						glVertex2f(i + 0.75 + 0.2,j-0.25+0.1);
+						glVertex2f(i + 0.78-0.15,j-0.25-0.05);
+						glVertex2f(i + 0.75,j - 0.25 - 0.07);
+						glVertex2f(i + 0.70 + 0.38,j - 0.25 + 0.2);
+					glEnd();
+					glBegin(GL_LINES);
+						glVertex2f(i + 0.75,j - 0.25);
+						glVertex2f(i,j - 0.25 - 0.07);
+						glVertex2f(i + 0.75,j - 0.25 - 0.07);
+						glVertex2f(i + 0.9,j - 0.5);
+						glVertex2f(i + 0.75 + 0.2,j - 0.25 + 0.1);
+						glVertex2f(i + 1.5,j - 0.25 + 0.2);
 					glEnd();
 				}
 				if (matriz[aux].bonus == 1) {
