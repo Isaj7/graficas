@@ -323,6 +323,10 @@ void actualizar(int value) {
 			- Esta tocando el margen superior
 			- Al llegar al margen inferior, esta tocando la barra */
 		if (((((Y + movY) <= -7.8) && (X1 <= (X + movX) && (X + movX) <= X2)) || ((Y + movY) >= 8.8)) && lost == 0) {
+			if ((((X + movX) <= X1 + 0.6) && (movX > 0)) || ((((X + movX) >= X2 - 0.6)) && (movX < 0))) {
+				movX = movX*(-1);
+				X += movX;
+			}
 			movY = movY*(-1);
 			Y += movY;
 		R = float(rand()%10)*0.1;
