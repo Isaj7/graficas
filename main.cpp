@@ -448,33 +448,6 @@ void render(){
 	glLoadIdentity ();                       
 	gluLookAt (0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	
-/*	
-	// Render Grid 
-	
-	glLineWidth(1.0);
-	glPushMatrix();
-    glColor3f( 0.0, 0.7, 0.7 );
-    glBegin( GL_LINES );
-    zExtent = DEF_floorGridScale * DEF_floorGridZSteps;
-    for(loopX = -DEF_floorGridXSteps; loopX <= DEF_floorGridXSteps; loopX++ )
-	{
-	xLocal = DEF_floorGridScale * loopX;
-	glVertex3f( xLocal, -zExtent, 0.0 );
-	glVertex3f( xLocal, zExtent,  0.0 );
-	}
-    xExtent = DEF_floorGridScale * DEF_floorGridXSteps;
-    for(loopZ = -DEF_floorGridZSteps; loopZ <= DEF_floorGridZSteps; loopZ++ )
-	{
-	zLocal = DEF_floorGridScale * loopZ;
-	glVertex3f( -xExtent, zLocal, 0.0 );
-	glVertex3f(  xExtent, zLocal, 0.0 );
-	}
-    glEnd();
-    glPopMatrix();
-	
-	// Fin Grid
-
-*/
 	//Suaviza las lineas
 	glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable( GL_LINE_SMOOTH );
