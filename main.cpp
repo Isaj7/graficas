@@ -28,7 +28,7 @@ float radio2;
 float bonoX[5];
 float bonoY[5];
 int numeroBono = 0;
-float R,G,B;
+float R=0.0,G=1.0,B=0.0;
 
 struct ladrillos {
    float posX;
@@ -73,7 +73,7 @@ void ladrillosAleatorios() {
 /*Funcion que genera la explosion*/
 int explosion(float cX, float cY, int estado){
 	float radio = estado*0.1;
-	glColor3f(1.0,1.0,1.0);
+	glColor3f(R,G,B);
 	
 	for(int i = 0; i < 10; i++){ 
 			float theta = 2.0f * 3.1415926f * float(i) / float(10);//get the current angle 
@@ -98,7 +98,7 @@ void tablero () {
 	*/
 	glLineWidth(2.0);
 	glBegin(GL_LINES);
-		glColor3f(0.0,1.0,0.0);
+		glColor3f(R,G,B);
 		glVertex2f(-9.1,9.5);
 		glVertex2f(-9.1,-9.0);
 		glVertex2f(-9.5,9.5);
@@ -123,32 +123,38 @@ void tablero () {
 	glEnd();
 
 	/* Ciclo que genera los ladrillos */
-	glBegin(GL_LINES);
 	int aux = 0;
 		for (float i = -8.25; i < 8.0; i = i + 2.5) {
 			for (float j = 7; 0.0 < j; j = j - 1.5) {
-				glColor3f(1.0,0.0,0.0);
+				glColor3f(R,G,B);
 				/* Se verifica si es un ladrillo especial para cambiar el color*/
 				if (matriz[aux].doble == 1) {
 					glColor3f(1.0,1.0,0.0);
 				}
 				else if (matriz[aux].doble == 2) {
-					glColor3f(0.0,0.0,1.0);
+					glColor3f(R,G,B);
+					glBegin(GL_TRIANGLES);
+						glVertex2f(i + 0.75-0.15,j-0.25-0.05);
+						glVertex2f(i+0.75,j-0.25-0.07);
+						glVertex2f(i + 0.75 + 0.2,j-0.25+0.1);
+					glEnd();
 				}
 				if (matriz[aux].bonus == 1) {
 					glColor3f(1.0,1.0,1.0);
 				}
 				if (matriz[aux].esta == 0) {
-					glVertex2f(i,j);
-					glVertex2f(i + 1.5,j);
-					glVertex2f(i,j - 0.5);
-					glVertex2f(i + 1.5,j - 0.5);
-					glVertex2f(i,j);
-					glVertex2f(i,j - 0.5);
-					glVertex2f(i + 1.5,j);
-					glVertex2f(i + 1.5,j - 0.5);
-					matriz[aux].posX = i;
-					matriz[aux].posY = j;
+					glBegin(GL_LINES);
+						glVertex2f(i,j);
+						glVertex2f(i + 1.5,j);
+						glVertex2f(i,j - 0.5);
+						glVertex2f(i + 1.5,j - 0.5);
+						glVertex2f(i,j);
+						glVertex2f(i,j - 0.5);
+						glVertex2f(i + 1.5,j);
+						glVertex2f(i + 1.5,j - 0.5);
+						matriz[aux].posX = i;
+						matriz[aux].posY = j;
+					glEnd();
 				}
 				if (matriz[aux].explota > 0 && matriz[aux].explota<=15)
 					matriz[aux].explota = explosion(matriz[aux].posX+0.75,matriz[aux].posY-0.25,matriz[aux].explota);
@@ -157,15 +163,16 @@ void tablero () {
 		}
 		/* Base azul*/
 		glColor3f(0.0,0.0,1.0);
-		glVertex2f(X1,-8.0);
-		glVertex2f(X2,-8.0);
-		glVertex2f(X1,-8.3);
-		glVertex2f(X2,-8.3);
-		glVertex2f(X1,-8.0);
-		glVertex2f(X1,-8.3);
-		glVertex2f(X2,-8.0);
-		glVertex2f(X2,-8.3);
-	glEnd();
+		glBegin(GL_LINES);
+			glVertex2f(X1,-8.0);
+			glVertex2f(X2,-8.0);
+			glVertex2f(X1,-8.3);
+			glVertex2f(X2,-8.3);
+			glVertex2f(X1,-8.0);
+			glVertex2f(X1,-8.3);
+			glVertex2f(X2,-8.0);
+			glVertex2f(X2,-8.3);
+		glEnd();
 
 	/* Pelota */
 	float radio = 0.2;
@@ -305,6 +312,9 @@ void actualizar(int value) {
 		if (((((Y + movY) <= -7.8) && (X1 <= (X + movX) && (X + movX) <= X2)) || ((Y + movY) >= 8.8)) && lost == 0) {
 			movY = movY*(-1);
 			Y += movY;
+		R = float(rand()%10)*0.1;
+		G = float(rand()%10)*0.1;
+		B = float(rand()%10)*0.1;
 		/* Si no esta tocando la barra, se termina el juego */
 		} else if (((Y + movY) <= -7.8) && ((Y + movY) > -9.0)) {
 			Y += movY;
@@ -328,6 +338,9 @@ void actualizar(int value) {
 			glutPostRedisplay();
 			glutTimerFunc(25, actualizar, 0);
 	} else {
+			R = float(rand()%10)*0.1;
+			G = float(rand()%10)*0.1;
+			B = float(rand()%10)*0.1;
 			movX = movX*(-1);
 			X += movX;
 			glutPostRedisplay();
