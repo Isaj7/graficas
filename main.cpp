@@ -28,13 +28,15 @@ float radio2;
 float bonoX[5];
 float bonoY[5];
 int numeroBono = 0;
+float R,G,B;
 
 struct ladrillos {
-   int posX;
-   int posY;
+   float posX;
+   float posY;
    int doble;
    int bonus;
    int esta;
+   int explota;
 } matriz[35];
 
 int generarRandom = 1;
@@ -68,46 +70,24 @@ void ladrillosAleatorios() {
 	generarRandom = 0;
 }
 
-void ejesCoordenada() {
+/*Funcion que genera la explosion*/
+int explosion(float cX, float cY, int estado){
+	float radio = estado*0.1;
+	glColor3f(1.0,1.0,1.0);
 	
-	glLineWidth(2.5);
-	glBegin(GL_LINES);
-		glColor3f(1.0,0.0,0.0);
-		glVertex2f(0,10);
-		glVertex2f(0,-10);
-		glColor3f(0.0,0.0,1.0);
-		glVertex2f(10,0);
-		glVertex2f(-10,0);
-	glEnd();
-
-	glLineWidth(1.5);
-	int i;
-	glColor3f(0.0,1.0,0.0);
-	glBegin(GL_LINES);
-		for(i = -10; i <=10; i++){
-			if (i!=0) {		
-				if ((i%2)==0){	
-					glVertex2f(i,0.4);
-					glVertex2f(i,-0.4);
-
-					glVertex2f(0.4,i);
-					glVertex2f(-0.4,i);
-				}else{
-					glVertex2f(i,0.2);
-					glVertex2f(i,-0.2);
-
-					glVertex2f(0.2,i);
-					glVertex2f(-0.2,i);
-
-				}
-			}
+	for(int i = 0; i < 10; i++){ 
+			float theta = 2.0f * 3.1415926f * float(i) / float(10);//get the current angle 
+			float x = radio * cosf(theta);//calculate the x component 
+			float y = radio * sinf(theta);//calculate the y component 
+		glBegin (GL_LINES);
+		for (float angle = 0; angle <= PI * 2; angle = angle + 0.01) {
+			glVertex2f(x + cX + sinf(angle) * 0.07, y+ cY +cosf(angle) * 0.07);
 		}
-		
-	glEnd();
-
-	glLineWidth(1.0);
+		glEnd();
+	}
+	
+	return estado+1;
 }
-
 /* Funcion que dibuja el tablero */
 void tablero () {
 	/* NOTA: 
@@ -152,7 +132,7 @@ void tablero () {
 				if (matriz[aux].doble == 1) {
 					glColor3f(1.0,1.0,0.0);
 				}
-				if (matriz[aux].doble == 2) {
+				else if (matriz[aux].doble == 2) {
 					glColor3f(0.0,0.0,1.0);
 				}
 				if (matriz[aux].bonus == 1) {
@@ -170,10 +150,11 @@ void tablero () {
 					matriz[aux].posX = i;
 					matriz[aux].posY = j;
 				}
+				if (matriz[aux].explota > 0 && matriz[aux].explota<=15)
+					matriz[aux].explota = explosion(matriz[aux].posX+0.75,matriz[aux].posY-0.25,matriz[aux].explota);
 				aux++;
 			}
 		}
-
 		/* Base azul*/
 		glColor3f(0.0,0.0,1.0);
 		glVertex2f(X1,-8.0);
@@ -223,78 +204,94 @@ void tablero () {
 	}
 }
 
-
-
+/*Se realiza un barrido de izquierda a derecha y de abajo hacia arriba 
+por un area del tablero relativa a la posicion de la bola y se verifica
+si la bola va a chocar con un ladrillo*/
+void barrerTablero(float minX,float maxX,float minY,float maxY){
+	for (float i = minX; i <= maxX; i = i + 2.5) {
+		for (float j = minY; j <= maxY; j = j + 1.5) {
+			/* Verifica si se esta estrellando contra lineas horizontales */
+			if ((movX + X <= i + 1.5 + 0.2) && (movX + X >= i - 0.2)) {
+				if ((movY + Y <= j + 0.2) && (movY + Y >= j - 0.5 - 0.2)) {
+					for (int k = 0; k < 35;k++){
+						if (matriz[k].posX==i && matriz[k].posY==j){
+							if (matriz[k].esta == 0) {
+								/* Verifica si es un bloque con bono */
+								if (matriz[k].bonus == 1)  {
+									matriz[k].bonus = 0;
+									activarBono = 1;
+									bonoX[numeroBono] = i + 0.75;
+									bonoY[numeroBono] = j - 0.25;
+									numeroBono++;
+								}
+								/* Verifica si es un bloque especial */
+								if (matriz[k].doble == 1)  {
+									matriz[k].doble = 2;
+								} else {
+									matriz[k].doble = 0;
+									matriz[k].esta = 1;
+									matriz[k].explota = 1;
+								}
+								movY = movY*(-1);
+								Y += movY;
+							}
+						}
+					}
+					
+				}
+			/* Verifica si se esta estrellando contra lineas verticales */
+			} else if ((movY + Y <= j + 0.2) && (movY + Y >= (j - 0.2- 0.5))) {
+				if (((movX + X) >= i - 0.2) && ((movX + X) <= (i+ 0.2 + 1.5))) {
+					for (int k = 0; k < 35;k++){
+						if (matriz[k].posX==i && matriz[k].posY==j){
+							if (matriz[k].esta == 0) {
+								/* Verifica si es un bloque con bono */
+								if (matriz[k].bonus == 1)  {
+									matriz[k].bonus = 0;
+									activarBono = 1;
+									bonoX[numeroBono] = i + 0.75;
+									bonoY[numeroBono] = j - 0.5;
+									numeroBono++;
+								}
+								/* Verifica si es un bloque especial */
+								if (matriz[k].doble == 1)  {
+									matriz[k].doble = 2;
+								} else {
+									matriz[k].doble = 0;
+									matriz[k].esta = 1;
+									matriz[k].explota = 1;
+								}
+								movY = movY*(-1);
+								Y += movY;
+							}
+						}
+					} 
+				}
+			}
+		}
+	}
+}
 
 /* Funcion encargada de actualizar el movimiento de la pelota*/
 
 /* NOTA: Maxima Altura que puede alcanzar la bola Y = 8.8 
 		 Minima Altura: Y = -7.8 */
-
 int lost = 0;
-int nextX;
-int nextY;
 void actualizar(int value) {
-	int estado = 0;
-	nextX = movX;
-	nextY = movY;
 	for (int auxBono = 0; auxBono <= numeroBono; auxBono++) {
 		bonoY[auxBono] -= 0.1;
 	}
 	/* Verifica si esta chocando a partir de Y mayor que cero */
 	if (movY + Y >= 0.0) {
-		for (float i = -8.25; i < 8.0; i = i + 2.5) {
-			for (float j = 7; 0.0 < j; j = j - 1.5) {
-				/* Vericia si se esta estrellando contra lineas horizontales */
-				if ((nextX + X <= (i + 1.5 + 0.3)) && (nextX + X >= i - 0.3)) {
-					if (((nextY + Y) <= j + 0.3) && ((nextY + Y) >= (j - 0.5 - 0.3))) {
-						if (matriz[estado].esta == 0) {
-							/* Verifica si es un bloque con bono */
-							if (matriz[estado].bonus == 1)  {
-								matriz[estado].bonus = 0;
-								activarBono = 1;
-								bonoX[numeroBono] = i + 0.75;
-								bonoY[numeroBono] = j - 0.5;
-								numeroBono++;
-							}
-							/* Verifica si es un bloque especial */
-							if (matriz[estado].doble == 1)  {
-								matriz[estado].doble = 2;
-							} else {
-								matriz[estado].doble = 0;
-								matriz[estado].esta = 1;
-							}
-							movY = movY*(-1);
-							Y += movY;
-						}
-					}
-				/* Vericia si se esta estrellando contra lineas verticales */
-				} else if ((nextY + Y <= j + 0.3) && (nextY + Y >= (j - 0.3- 0.5))) {
-					if (((nextX + X) >= i - 0.3) && ((nextX + X) <= (i+ 0.3 + 1.5))) {
-						if (matriz[estado].esta == 0) {
-							/* Verifica si es un bloque con bono */
-							if (matriz[estado].bonus == 1)  {
-								matriz[estado].bonus = 0;
-								activarBono = 1;
-								bonoX[numeroBono] = i + 0.75;
-								bonoY[numeroBono] = j - 0.5;
-								numeroBono++;
-							}
-							/* Verifica si es un bloque especial */
-							if (matriz[estado].doble == 1)  {
-								matriz[estado].doble = 2;
-							} else {
-								matriz[estado].doble = 0;
-								matriz[estado].esta = 1;
-							}
-							movX = movX*(-1);
-							X += movX;
-						}
-					} 
-				}
-				estado++;
-			}
-		}
+		if (X <= 0.0 && Y <= 3.5)
+			barrerTablero(-8.25,0.0,1.0,4.0);
+		else if (X <= 0.0 && Y > 3.5)
+			barrerTablero(-8.25,0.0,5.5,7.0);
+		else if (X > 0.0 && Y <= 3.5)
+			barrerTablero(1.75,8.0,1.0,4.0);
+		else if (X > 0.0 && Y > 3.5)
+			barrerTablero(1.75,8.0,5.5,7.0);
+
 	}
 	/* REBOTE CONTRA LOS MARGENES */
 	/* Movimiento del eje Y [De arriba hacia abajo] 
@@ -450,6 +447,7 @@ void render(){
 			matriz[limpiar].doble = 0;
 			matriz[limpiar].bonus = 0;
 			matriz[limpiar].esta = 0;
+			matriz[limpiar].explota = 0;
 		}
 		ladrillosAleatorios();
 	}
