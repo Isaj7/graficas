@@ -1,8 +1,8 @@
 /***************************************
 | Maria Isabel Jilo. Carnet: 07-41063   |
-| Octavio Manzano.   Carnet: 08-10672        |
-| Proyecto 2 OpenGL                                                |
-| Brick Breaker                                                        |
+| Octavio Manzano.   Carnet: 08-10672   |
+| Proyecto 2 OpenGL                     |
+| Brick Breaker                         x|
 *****************************************/
 
 #include <GL\glew.h>
@@ -26,13 +26,13 @@ float X2 = 1.5;
 float PI = 3.141592;
 float X = 0.0;
 float Y = -7.8;
-float movY = -0.1;
-float movX = 0.1;
 float velX = 0.1;
 float radio2;
 float bonoX[5];
 float bonoY[5];
 float R=0.0,G=1.0,B=0.0;
+float movX = 0.1;
+float movY = -0.1;
 
 struct ladrillos {
    float posX;
@@ -173,7 +173,14 @@ void tablero () {
                         }
                 }
                 /* Base azul*/
-                glColor3f(0.0,0.0,1.0);
+				if (X1 <= -9.1) {
+					X1 = -9.0;
+					X2 = X1 + 3;
+				} else if  (X2 >= 9.1) {
+					X2 = 9.0;
+					X1 = X2 - 3;
+				}
+				glColor3f(0.0,0.0,1.0);
                 glBegin(GL_LINES);
                         glVertex2f(X1,-8.0);
                         glVertex2f(X2,-8.0);
