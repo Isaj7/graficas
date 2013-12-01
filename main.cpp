@@ -74,6 +74,12 @@ void ladrillosAleatorios() {
         generarRandom = 0;
 }
 
+
+/* Funcion que aparecera cuando el jugador gane el juego s*/
+void ganador () {
+
+}
+
 /*Funcion que genera la explosion*/
 int explosion(float cX, float cY, int estado){
         float radio = estado*0.1;
@@ -494,16 +500,22 @@ void render(){
         glEnable( GL_LINE_SMOOTH );
 
         if (generarRandom == 1){
-        /* Limpiando los ladrillos de sus estados*/
-        for (int limpiar = 0; limpiar < 35; limpiar++) {
-                matriz[limpiar].doble = 0;
-                matriz[limpiar].bonus = 0;
-                matriz[limpiar].esta = 0;
-                matriz[limpiar].explota = 0;
+			/* Limpiando los ladrillos de sus estados*/
+			for (int limpiar = 0; limpiar < 35; limpiar++) {
+					matriz[limpiar].doble = 0;
+					matriz[limpiar].bonus = 0;
+					matriz[limpiar].esta = 0;
+					matriz[limpiar].explota = 0;
+			}
+			ladrillosAleatorios();
         }
-        ladrillosAleatorios();
-        }
-        tablero();
+        
+		if (estar == 0){
+			ganador();
+		} else {
+			tablero();
+		}
+
 
         glDisable(GL_BLEND);
         glDisable(GL_LINE_SMOOTH);
