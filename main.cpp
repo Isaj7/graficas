@@ -2,7 +2,7 @@
 | Maria Isabel Jilo. Carnet: 07-41063   |
 | Octavio Manzano.   Carnet: 08-10672   |
 | Proyecto 2 OpenGL                     |
-| Brick Breaker                         x|
+| Brick Breaker                         |
 *****************************************/
 
 #include <GL\glew.h>
@@ -33,6 +33,7 @@ float bonoY[5];
 float R=0.0,G=1.0,B=0.0;
 float movX = 0.1;
 float movY = -0.1;
+int estar = 35;
 
 struct ladrillos {
    float posX;
@@ -150,9 +151,6 @@ void tablero () {
                                                 glVertex2f(i + 1.5,j - 0.25 + 0.2);
                                         glEnd();
                                 }
-                                if (matriz[aux].bonus == 1) {
-                                        glColor3f(1.0,1.0,1.0);
-                                }
                                 if (matriz[aux].esta == 0) {
                                         glBegin(GL_LINES);
                                                 glVertex2f(i,j);
@@ -251,14 +249,18 @@ void barrerTablero(float minX,float maxX,float minY,float maxY){
                                                                 }
                                                                 /* Verifica si es un bloque especial */
                                                                 if (matriz[k].doble == 1)  {
-                                                                        matriz[k].doble = 2;
+																	matriz[k].doble = 2;
+																} else if (matriz[k].doble == 2) {
+																	matriz[k].explota = 1;
+																	matriz[k].doble = 0;
+																	matriz[k].esta = 1;
+																	estar--;
                                                                 } else {
-                                                                        matriz[k].doble = 0;
-                                                                        matriz[k].esta = 1;
-                                                                        matriz[k].explota = 1;
-                                                                }
-                                                                movY = movY*(-1);
-                                                                Y += movY;
+																	matriz[k].esta = 1;
+																	estar--;
+																}
+																movY = movY*(-1);
+																Y += movY;
                                                         }
                                                 }
                                         }
@@ -280,14 +282,18 @@ void barrerTablero(float minX,float maxX,float minY,float maxY){
                                                                 }
                                                                 /* Verifica si es un bloque especial */
                                                                 if (matriz[k].doble == 1)  {
-                                                                        matriz[k].doble = 2;
+																	matriz[k].doble = 2;
+																} else if (matriz[k].doble == 2) {
+																	matriz[k].explota = 1;
+																	matriz[k].doble = 0;
+																	matriz[k].esta = 1;
+																	estar--;
                                                                 } else {
-                                                                        matriz[k].doble = 0;
-                                                                        matriz[k].esta = 1;
-                                                                        matriz[k].explota = 1;
-                                                                }
-                                                                movY = movY*(-1);
-                                                                Y += movY;
+																	matriz[k].esta = 1;
+																	estar--;
+																}
+																movY = movY*(-1);
+																Y += movY;
                                                         }
                                                 }
                                         } 
